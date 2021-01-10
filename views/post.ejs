@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/navbar'); -%>
+  <!-- <header class="masthead" style="background-image: url('img/post-bg.jpg')"> -->
+  <header class="masthead" style="background-image: url('<%= blogpost.image %>')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">              
+            <h1><%= blogpost.title %></h1>
+            <h3 class="subheading"><%= blogpost.body %></h3>
+            <span class="meta">Posted by
+                <a href="#"><%= blogpost.userid.username %></a>
+                on <%= blogpost.datePosted.toDateString() %>
+            </span>
+            <form method="POST" action="/post/<%= blogpost._id %>?_method=DELETE">
+              <button type="submit">Delete resource</button>
+              <a class="btn btn-dark btn-block mb-2" href="/posts/edit/<%= blogpost._id %>">Edit</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto lead">
+            <%= blogpost.body %>
+      </div>
+    </div>
+  </article>
+  <hr>
+  <%- include('layouts/footer'); -%>
+  <%- include('layouts/scripts'); -%>
+</body>
+</html>

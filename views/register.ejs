@@ -1,0 +1,78 @@
+
+<%- include('layouts/header'); -%>
+  <%- include('layouts/navbar'); -%>
+  <div class="container">
+        <div class="my-content">
+          <% if (locals.registerError){ %>
+            <div class=" col-md-4 my-error mb-2 mx-auto bg-danger rounded p-1 d-flex justify-content-between">
+              <p class="lead mt-2"><%= locals.registerError %></p> 
+              <span class="pt-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" color="pink" width="26" height="26" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path fill-rule="evenodd" d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683z"/>
+                  <path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                </svg>
+              </span>
+            </div>
+        <% } %>
+
+          <% if (locals.usernameTaken){ %>
+              <div class=" col-md-4 my-error mb-2 mx-auto bg-danger rounded p-1 d-flex justify-content-between">
+                <p class="lead mt-2">username already used!</p> 
+                <span class="pt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" color="pink" width="26" height="26" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path fill-rule="evenodd" d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683z"/>
+                    <path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                  </svg>
+                </span>
+              </div>
+          <% } %>
+
+          <% if (locals.myerrors){ %>
+            <p><%= myerrors.err %></p>
+          <% myerrors.forEach((err) => { %>
+            <div class=" col-md-4 my-error mb-2 mx-auto bg-danger rounded p-1 d-flex justify-content-between">
+              <p class="lead mt-2"><%= err.msg %></p> <span class="pt-2"><svg xmlns="http://www.w3.org/2000/svg" color="pink" width="26" height="26" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path fill-rule="evenodd" d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683z"/>
+                <path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+              </svg></span>
+            </div>
+              
+          <%  })  %>
+          <% } %>           
+    <!-- Main Content -->
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-6 col-md-10 mx-auto mb-4 product-card"> 
+      <h3 class="text-right"><img src="/images/cash-register.svg" height="30" width="30" fill = "#AB7C94" alt=""></h3>      <hr>       
+      <form action="/users/create" method="POST" class="col-md-10 mx-auto">
+          <!-- username input -->
+          <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="pick a username" id="username" name="username" >              
+          </div>
+        </div>
+        <!-- password -->
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="pick a password" id="password" name="password">              
+          </div>
+        </div>
+        <br>                    
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Register</button>
+        </div>
+      </form>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  
+            
+  <%- include('layouts/footer'); -%>
+  <%- include('layouts/scripts'); -%>

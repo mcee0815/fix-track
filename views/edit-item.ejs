@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <%- include('layouts/header'); -%>
+<body>
+  <%- include('layouts/navbar'); -%>
+  <div class="container">
+      <div class="container my-content">
+    <div class="row">
+      <div class="col-md-6 mx-auto product-card">
+        <h4 class="text-center">Edit Item </h4>
+        <hr>
+    <form action="/catalog/edit/<%= item.id %>?_method=PUT" method="POST" class="col-md-10 mx-auto ">
+      <input type="hidden" name="_method" value="PUT">
+      <div class="control-group ">
+        <div class="form-group floating-label-form-group controls">
+          <label for="brand">Brand</label>
+          <input type="text" class="form-control" value="<%= item.brand %>" name="brand">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label for="details">Details</label>
+          <input type="text" class="form-control" value="<%= item.details %>" name="details">
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label for="quantity">Quantity</label>
+          <input type="number" class="form-control" value="<%= item.quantity %>" name="quantity">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <input type="checkbox" name="discontinue" value="true">
+        <label for="discontinue">discontinue item</label>
+      </div>
+
+      <div class="form-group">
+        <input type="checkbox" name="outOfStock" value="true">
+        <label for="discontinue">item is out stock</label>
+      </div>
+
+      <div class="form-group">
+        <input type="checkbox" name="lowStock" value="true">
+        <label for="lowStock">replenish soon!</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+      </div>
+    </div>
+  </div>
+  </div>
+    <%- include('layouts/footer'); -%>
+    <%- include('layouts/scripts'); -%>
+</body>
+</html>
