@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "devstart": "nodemon ./bin/www",
-    "start": "node ./bin/www"
+    
+    
+      "start": "node index.js"
   },
   "engines":{
     "node": "11.15.0"
