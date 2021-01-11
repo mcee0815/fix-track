@@ -9,9 +9,9 @@ const mongoose = require('mongoose')
 const expressSession = require('express-session')
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1/grocery_catalog';
-var cataloger_con = "mongodb+srv://shopper1:shopper1password@cluster0.rurok.mongodb.net/test"
-mongoose.connect(cataloger_con, {useNewUrlParser: true, useUnifiedTopology: true});
+// var mongoDB = 'mongodb://127.0.0.1/grocery_catalog';
+let cataloger_db = "mongodb+srv://shopper1:shopper1password@cluster0.rurok.mongodb.net/test"
+mongoose.connect(cataloger_db, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Get the default connection
 var db = mongoose.connection;

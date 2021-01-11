@@ -13,10 +13,6 @@ p{
   opacity: .9;
 }
 
-.my-opacity{
-  /* opacity: .8;
-  background-color: darkblue; */
-}
 
 nav{
   background:#e79f31 ;
@@ -92,4 +88,19 @@ footer {
 form .form-group  {
   margin: 10px;
   /* padding: -5; */
+}
+/* icon */
+.discontinued-icon,.outofstock-icon,.lowstock-icon{
+    padding: 3px;
+    border-radius: 2px;
+}
+.distcontinued-color{
+  background-color: white;
+
+}
+.outofstock-color {
+  background-color: burlywood;
+}
+.lowstock-color{
+  background-color: darkviolet;
 }
