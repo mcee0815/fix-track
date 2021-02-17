@@ -12,7 +12,7 @@ var sass = require('node-sass-middleware');
 //Set up default mongoose connection
 // var mongoDB = 'mongodb://127.0.0.1/grocery_catalog';
 var mongoDB = 'mongodb://127.0.0.1/test';
-let cataloger_db = "mongodb+srv://shopper1:shopper1password@cluster0.rurok.mongodb.net/test"
+// let cataloger_db = "mongodb+srv://shopper1:shopper1password@cluster0.rurok.mongodb.net/test"
 let fixtrack_db = "mongodb+srv://mikecee:mypassword@cluster0.qvce1.mongodb.net/test"
 mongoose.connect(fixtrack_db, {useNewUrlParser: true, useUnifiedTopology: true});
 

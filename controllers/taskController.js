@@ -56,7 +56,7 @@ exports.task_create_post = async(req,res) => {
     // validation errors in this request and wraps them in an object
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-     res.render('create-task',{myerrors:errors.array()})
+    return  res.render('create-task',{myerrors:errors.array()})
   }
     //console.log(req.body)
     // create task and redirect to tasks index page
