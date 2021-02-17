@@ -12,8 +12,8 @@ router.get('/create',redirectIfAuthenticated, userCtrl.create_user_get);
 
 /* POST create user (submit). */
 router.post('/create',redirectIfAuthenticated,[
-    body('username', 'Empty username').trim().isLength({ min: 2 }).escape(),
-    body('password', 'provide password').trim().isLength({ min: 3 }).escape(),
+    body('username', 'Empty Username').trim().isLength({ min: 2 }).escape(),
+    body('password', 'Provide Password').trim().isLength({ min: 3 }).escape(),
 ], userCtrl.create_user_post);
 
 /* GET user login. */

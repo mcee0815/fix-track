@@ -7,11 +7,14 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 const expressSession = require('express-session')
+var sass = require('node-sass-middleware');
 
 //Set up default mongoose connection
 // var mongoDB = 'mongodb://127.0.0.1/grocery_catalog';
+var mongoDB = 'mongodb://127.0.0.1/test';
 let cataloger_db = "mongodb+srv://shopper1:shopper1password@cluster0.rurok.mongodb.net/test"
-mongoose.connect(cataloger_db, {useNewUrlParser: true, useUnifiedTopology: true});
+let fixtrack_db = "mongodb+srv://mikecee:mypassword@cluster0.qvce1.mongodb.net/test"
+mongoose.connect(fixtrack_db, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Get the default connection
 var db = mongoose.connection;
@@ -19,11 +22,14 @@ var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-
-
+// import all routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog');
+var taskRouter = require('./routes/task');
+var detailsRouter = require('./routes/details');
+var filtersRouter = require('./routes/filters');
+var paginationRouter = require('./routes/pagination');
 
 var app = express();
 app.use(function(req, res, next) {
@@ -32,13 +38,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-
-// global.loggedIn = null
-
-// app.use('*',(req,res,next)=>{
-//   loggedIn = req.session.userId
-//   next()
-// })
+app.use(
+  sass({
+      src: __dirname + '/sass',    // Input SASS files
+      dest: __dirname + '/public', // Output CSS
+      debug: true                
+  })
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,11 +62,13 @@ app.use(bodyParser.json());
 app.use(expressSession({
   secret:'fritz the cat'
 }))
-// 
+
+// point to assets in public directory 
 app.use(express.static(path.join(__dirname, 'public')));
 
-global.loggedIn = null
 
+global.loggedIn = null
+// check if any user is logged in
 app.use('*',(req,res,next)=>{
   loggedIn = req.session.userId
   next()
@@ -70,6 +78,10 @@ app.use('*',(req,res,next)=>{
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);
+app.use('/tasks', taskRouter);
+app.use('/details', detailsRouter);
+app.use('/filters', filtersRouter);
+app.use('/paginated', paginationRouter);
 app.use((req,res) => res.render('404'))
 
 // catch 404 and forward to error handler

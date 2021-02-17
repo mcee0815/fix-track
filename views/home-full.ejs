@@ -1,0 +1,40 @@
+
+  <%- include('layouts/header'); -%>
+  <%- include('layouts/navbar'); -%>
+  <div class="full-screen">
+      <div class="dark-overlay">
+        <div class="container login d-flex h-100 align-items-center">
+            
+            <div class="col-md-6 pt-2 mx-auto rounded bg-light">
+                <h2 class="text-center my-heading">Fix & Track  <span class=""></span></h2>
+                <form action="/users/login" method="POST"class="col-md-10 mx-auto" >
+                  <!-- username input -->
+                  <div class="control-group">
+                  <div class="form-group floating-label-form-group controls">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Enter your username" id="username" name="username">              
+                  </div>
+                </div>
+                <!-- password -->
+                <div class="control-group">
+                  <div class="form-group floating-label-form-group controls">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Enter your password" id="password" name="password">              
+                  </div>
+                </div>
+                <br>                    
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary" id="sendMessageButton">login</button>
+                </div>
+                <a href="/users/create" class="">Register<small> for an account</small></a>
+              </form>
+            </div>
+        </div>
+      </div>
+  </div>
+  
+  
+    <%- include('layouts/footer'); -%>
+    <%- include('layouts/scripts'); -%> 
+    
+    <!-- /Users/michaelcorporan/mongodb/bin/mongod  --dbpath=/Users/michaelcorporan/mongodb-data -->

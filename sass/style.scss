@@ -1,0 +1,152 @@
+$white: #FFF;
+$salmon:#fa8072;
+$blue:#0000ff;
+
+body {
+    background-color: #97c8f0;
+    font-size: 16px;
+}
+nav{
+    background-color:#007bff87;
+}
+nav a{
+    color:white;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.my-heading{
+    color: #4b4b4b;
+    font-weight: 200;
+    border-bottom: 2px solid #80808021;
+    padding-bottom: 5px;
+}
+// .banner{
+//     background-image: url('/images/maintenance.jpg');
+//     padding: 0;
+//     margin-bottom: 1.5rem;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
+.my-overlay{
+    opacity: .7;
+    width: 100%;
+    height: 100%;
+}
+
+.details-card{
+    p{
+        font-weight:200;
+        font-size: 1.2em;
+    }
+    border-radius:10px;
+    line-height: .5;
+    background-image: linear-gradient(to top right, hsl(207, 74%, 57%), #1972bb + 170);
+    // background-image: linear-gradient(to top right, #97c8f0, #97c8f0 + 170);
+    box-shadow: 10px 43px 72px -21px rgba(0,0,0,0.44);
+    -webkit-box-shadow: 10px 43px 72px -21px rgba(0,0,0,0.44);
+    -moz-box-shadow: 10px 43px 72px -21px rgba(0,0,0,0.44);}
+.task-card{
+    background-image: linear-gradient(to top right, #97c8f0, #97c8f0 + 170);
+    color: $white;
+    border-radius:5px;
+    .task-card-icon{
+        line-height: .5;
+    }
+    .task-card-guest{
+            line-height: .6;
+        }
+
+    a{
+        text-decoration: none;
+        padding-top: 5px;
+        color:black + 50;
+        line-height: .4;
+    }
+    .task-card-icon img{
+        // margin-bottom: 7px;
+    }
+    .check-icon{
+        background-color:#9acd3252;
+    }
+    .my-btn-primary{
+        color: #074f9a;
+        background-color: #5897da;
+        border-color: #007bff;
+}
+}
+.task-card:hover{
+    background: dodgerblue;
+    transition: all .80s;
+}
+.status-card{
+    background-image: linear-gradient(to top right, hsl(207, 74%, 57%), #1972bb + 170);
+    box-shadow: 10px 43px 72px -21px rgba(0,0,0,0.44);
+    border-radius: 8px;
+    input[type],textarea[type="text"] {
+        color:gray;
+      }
+}
+
+.new-task{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.fa-plus-circle{
+    color: white;
+}
+.fa-wrench{
+    color: darkorange;
+}
+
+.fa-user{
+    color: green;
+}
+.fa-plus-circle:hover{
+    color: blue;
+    transition: all .5s;
+}
+.repairman-avatar{
+    width: 37px;
+    height: 27px;
+    // border-radius:25px;
+}
+
+.loader {
+    display: none;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+//   #popover882927{
+//       background-color: #28a74557;
+//   }
+.popover { background: #28a74557 !important; }
+
+.move-down{
+    margin-bottom: 100px;
+}
+
+// footer was overlapping content fix
+.my-container {
+    flex: 1 1 auto;  /*grow vertically*/
+}

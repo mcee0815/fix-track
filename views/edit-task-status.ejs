@@ -1,0 +1,41 @@
+<%- include('layouts/header'); -%>
+<%- include('layouts/navbar'); -%>
+<%- include('layouts/banner'); -%>
+
+<div class="container">
+  <div class="  col-md-6 mx-auto status-card">
+    <h3 class="my-heading pt-3">Repair Status Update</h3>
+  <form action="/tasks/edit-task-status/<%= task.id %>?_method=PUT" method="POST"  >
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control"readonly  placeholder="enter a brand"  name="title" value="<%= task.title %>" >
+    </div>
+    <div class="mb-3">
+      <div class="form-floating">
+        <label for="floatingTextarea">Details</label>
+        <textarea class="form-control" type="text" readonly name="details"><%= task.details %></textarea>
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" name="completed" value="true" class="form-check-input">
+      <label class="form-check-label" for="exampleCheck1">Mark completed?</label>
+    </div>
+    <div class="mb-3">
+      <label for="completedOn">Date completed</label>
+      <input type="datetime-local" class="form-control" name="completedOn" value="true">
+    </div>
+    <div class="mb-3">
+      <label for="maintainer">Completed By</label>
+      <input type="text" class="form-control" placeholder="ex.john Doe" name="maintainer">
+    </div>
+      
+    <button type="submit" class="btn btn-primary mb-2">Enter</button>
+  </form>
+</div>
+
+</div>
+
+ 
+
+<%- include('layouts/scripts'); -%>
+<%- include('layouts/footer'); -%>

@@ -1,0 +1,57 @@
+<%- include('layouts/header'); -%>
+<%- include('layouts/navbar'); -%>
+<%- include('layouts/banner'); -%>
+
+<div class="container">
+  
+
+  <div class=" col-md-6 mx-auto status-card p-2">
+    <h2 class="my-heading font-weight-light text-left">create a task</h2>
+    <form action="/tasks/create-task" method="POST" class="col-md-10 mx-auto" >
+      <% if (locals.myerrors){ %>
+        <% myerrors.forEach((err) => { %>
+            <div class="bg-danger py-1 px-2 mb-1 rounded"><p class="text-light fs-3"><%= err.msg %></p></div>
+        <%  })  %>
+        <% } %>
+      <div class="mb-3">
+        <label for="title">Complaint</label>
+        <input type="text" class="form-control" placeholder="whats the problem?" name="title">
+      </div>
+      
+      <div class="mb-3">
+        <div class="form-floating">
+          <label for="floatingTextarea">Details</label>
+          <textarea class="form-control" type="text" name="details"></textarea>
+        </div>
+      </div>
+     
+        <div class="form-group">
+          <label for="location">Location/Unit:</label>
+          <select class="form-control" id="exampleFormControlSelect1" name="location">
+            <option value="1a">Unit 1a</option>
+              <option value="1b">Unit 1b</option>
+              <option value="1c">Unit 1c</option>
+              <option value="2a">Unit 2a</option>
+              <option value="2b">Unit 2b</option>
+              <option value="2c">Unit 2c</option>
+              <option value="3a">Unit 3a</option>
+              <option value="3b">Unit 3b</option>
+              <option value="3c">Unit 3c</option>
+              <option value="na">n/a</option>
+              <option value="other">Other</option>
+          </select>
+        </div>
+    
+        <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+            <label for="reportedBy">Reported By</label>
+            <input type="text" class="form-control" placeholder="person reporting" name="reportedBy">
+          </div>
+        </div>
+          <button type="submit" class="btn btn-primary mt-2 ml-2">create task</button>
+      </form>
+
+  </div>
+</div>
+<%- include('layouts/scripts'); -%>
+<%- include('layouts/footer'); -%>

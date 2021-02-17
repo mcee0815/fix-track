@@ -24,20 +24,23 @@ exports.create_user_post = async (req, res) => {
     // validation errors in this request and wraps them in an object
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+        // if any of the set validation errors are found
        res.render('register',{myerrors:errors.array()})
     }
-   // does the user already exist?
+   // is the username already used?
    const user = await User.findOne({username:req.body.username})
+   let usernameTakenMsg = ''
     if (user) {
-        usernameTaken = 'user already taken!' 
-        res.render('register',{usernameTaken})
+        usernameTakenMsg = 'username is already taken!' 
+        // res.render('register')
+        // res.send('ohohohohoh')
+        res.render('register',{usernameTakenMsg})
     }
-    
   // create user and redirect to catalog page
       await User.create({
           ...req.body,
       })
-          res.redirect('/catalog')
+          res.render('home')
 };
 
 // Login user on get.
@@ -47,48 +50,28 @@ exports.user_login_get = function(req, res) {
 
 // Login user on post.
 exports.user_login_post = async (req, res) => {
-    // destructure req.body
     const{username,password} = req.body
-    
+
+    // check for no blank input fields
     if (!username || !password){
         res.render('login',{fieldsEmpty:'a username and password is required'})
     }
-    
     let userFound = await User.findOne({username:username})
-
+    if(!userFound){
+        // user is not registered
+        res.render('login',{registerError:'Account not found. Please register'})
+    }
     if (userFound) {
         bcrypt.compare(password,userFound.password,(err,match)=> {
             if (match) {
-            //password did match
+                // password did match
                 req.session.userId = userFound._id 
-                res.redirect('/catalog')
+                res.redirect('/tasks')
             }   
-            // password did not match
-                res.render('login',{myError:'wrong password'})
+                // password did not match
+                res.render('login',{myError:'Incorrect Password'})
         })
-    } else if(!userFound){
-        // user is not registered
-        res.render('register',{registerError:'you do not have an account.please register'})
-    }
-    
-    // does the user exist? if so compare the passwords entered.
-    // User.findOne({username:username},(err,userFound)=>{
-    //     if (userFound) {
-    //         bcrypt.compare(password,userFound.password,(err,match)=> {
-    //             if (match) {
-    //                 req.session.userId = userFound._id 
-    //                 res.redirect('/catalog')
-    //             }   
-    //             // password did not match
-    //                 res.render('login',{myError:'wrong password'})
-    //         })
-    //     } else {
-    //         // check for empty fields
-    //         if (!username || !password) {
-    //             res.render('login',{fieldsEmpty:'a username and password is required'})                // res.send('missing fields!')
-    //         }
-    //     }
-    // })
+     } 
 };
 
 // Logout user on post.
@@ -98,25 +81,3 @@ exports.user_logout_get = function(req, res) {
     })
     
 };
-
-
-// const found = await User.findOne({username:username})
-
-// if (found) {
-//     bcrypt.compare(password,found.password,(err,match)=> {
-//         if (match) {
-//         //password did match
-//             req.session.userId = userFound._id 
-//             res.redirect('/catalog')
-//         }   
-//         // password did not match
-//             res.render('login',{myError:'wrong password'})
-//     })
-// } else if(!found){
-//     res.send('no user found')
-// }
-
-// check for empty fields
-// if (!username || !password) {
-//     res.render('login',{fieldsEmpty:'a username and password is required'})                // res.send('missing fields!')
-// }

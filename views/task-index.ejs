@@ -1,0 +1,98 @@
+<%- include('layouts/header'); -%>
+<%- include('layouts/navbar'); -%>
+<!-- <%- include('layouts/banner'); -%> -->
+
+<div class=" my-container container">
+        <h2 class ="my-heading mt-2 text-left">Fix & Track</h2>
+        <%- include('layouts/dashboard'); -%>
+        <!-- <hr> -->
+        <% if(loggedIn) { %>
+            <%- include('layouts/new-task-component'); -%>   
+            <% } %>
+
+        <% if(loggedIn) { %>
+
+    <% tasks.forEach(task => { %>
+        <div class=" col-md-12 task-card d-flex justify-content-between p-1 mb-2 ">
+            <div class="d-flex flex-column ">
+                <a href="/details/<%= task.id %>" class="task-card-hover p-2">
+                    <p><%= task.title %></p>
+                    <p class="">Location:<%= task.location %></p>
+            
+                    <% if (task.completed) { %> 
+                        <p>Completed: <%= moment(task.completedOn).format('lll') %></p>
+                    <% } else { %>
+                        <p>status: Open</p>
+                    <% } %>
+                </a>
+            </div>
+            <% if(task.completed) { %>
+            <div class=" task-card-icon d-flex flex-column">
+                <img
+                    class = "check-icon mx-auto"
+                    src="/images/check.svg"
+                    alt="triangle with all three sides equal"
+                    fill="white"
+                    color="green"
+                    height="27"
+                    width="27" />
+                
+                    <button type="button" class="btn btn-link" data-container="body" data-html="true" data-toggle="popover" data-placement="left" data-content="<p>Repaired by: <%= task.maintainer %></p>">
+                        <img src="/images/repairman-head-1.jpg" class="repairman-avatar">
+                      </button>  
+                        
+            </div>
+            
+            <% } else if (!task.completed) { %> 
+                <i class="fas fa-wrench fa-lg px-3 py-2"></i>
+            <% } %>    
+        </div>
+            
+        <% }) %>
+        <% } %>
+
+        <% if(!loggedIn) { %>
+        <% tasks.forEach(task => { %>
+        <div class=" col-md-12 task-card d-flex justify-content-between p-1 mb-2 ">
+            <div class="d-flex flex-column mt-3 ml-2 task-card-guest ">
+                
+                    <p class="text-dark"><%= task.title %></p>
+                    <p class="text-dark">Location: <span class="text-muted"><%= task.location %></span></p>
+            
+                    <% if (task.completed) { %> 
+                        <p class="text-dark">Completed: <span class="text-muted"><%= moment(task.completedOn).format('lll') %></span></p>
+                    <% } else { %>
+                        <p class="text-dark">Status: <span class="text-muted">Open</span></p>
+                    <% } %>
+            </div>
+
+            <% if(task.completed) { %>
+            <div class=" task-card-icon d-flex flex-column">
+                <img
+                    class = "check-icon mx-auto"
+                    src="/images/check.svg"
+                    alt="triangle with all three sides equal"
+                    fill="white"
+                    color="green"
+                    height="27"
+                    width="27" />
+                    
+                    <button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="left" data-content="<p>Repaired by: <%= task.maintainer %></p>">
+                        <img src="/images/repairman-head-1.jpg" class="repairman-avatar">
+                    </button>    
+            </div>
+            
+            <% } else if (!task.completed) { %> 
+                <i class="fas fa-wrench fa-lg px-3 py-2"></i>
+            <% } %>
+            
+        </div>
+            
+        <% }) %>
+       
+        <% } %> 
+</div>
+<%- include('layouts/scripts'); -%>
+<%- include('layouts/footer'); -%>
+
+

@@ -1,0 +1,38 @@
+<%- include('layouts/header'); -%>
+<%- include('layouts/navbar'); -%>
+<%- include('layouts/banner'); -%>
+
+
+<div class="container">
+        <!-- <h3 class ="my-heading mt-2 text-center">Details for this task</h3>     -->
+        <div class="details-card d-flex flex-column p-3 col-md-6 mx-auto" >
+            <h3 class ="my-heading  text-left mb-4">Repair details</h3>
+            <p><span class="">Title: </span><%= task.title %></p>
+            <p><span class="">Details: </span><%= task.details %></p>
+            <p><span class="">Reported By: </span><%= task.reportedBy %></p>
+            <p><span class="">Location: </span><%= task.location %></p>
+            <p>Date: <%= moment(task.reportedAt).format( 'LLL') %></p>
+            
+            <div class="col-md-4 d-flex flex-column pl-0">
+                <a href="/tasks/edit-task-status/<%= task.id%>" class="btn btn-primary btn-sm mb-2">Do this repair</a>
+            <form method="POST" action="/tasks/delete-task/<%= task._id %>?_method=DELETE"  >
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm btn-block">
+                <a href="/tasks" class=" btn btn-info btn-sm btn-block  mt-2">Go Back</a>
+            </form>
+            </div>
+            <!-- <a href="/tasks/edit-task-status/<%= task.id%>" class="btn btn-primary mb-2">Do this repair</a>
+            <form method="POST" action="/tasks/delete-task/<%= task._id %>?_method=DELETE"  >
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-block">
+            </form> -->
+        </div>
+    </div>
+</div>
+<%- include('layouts/footer'); -%>
+<%- include('layouts/scripts'); -%>
+
+
+
+
+   

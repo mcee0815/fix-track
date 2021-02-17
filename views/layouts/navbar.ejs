@@ -1,34 +1,31 @@
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg mb-4 my-boxshadow   id="mainNav">
+
+<nav class="navbar navbar-expand-lg my-boxshadow "  id="mainNav">
     <div class="container">
-      <a class="navbar-brand" href="/">Cataloger</a>
+      <a class="navbar-brand" aria-disabled="" href="#">Fix & Track</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           
           <div class="dropdown show">
-            <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class=" btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Filters
             </a>
-          
-            <div class=" bg-success dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="/catalog">All</a>
-              <a class="dropdown-item" href="/catalog/lowstock">Low Stock</a>
-              <a class="dropdown-item" href="/catalog/outofstock">Out Of Stock</a>
-              <a class="dropdown-item" href="/catalog/discontinued">Discontinued</a>
+            <div class=" filters bg-primary dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class=" all-repairs dropdown-item" href="/tasks">All Repairs</a>
+              <a class=" all-paginated dropdown-item" href="/paginated/1">Paginated</a>
+              <a class="open-repairs dropdown-item" href="/filters/open">Open Repairs</a>
+              <a class=" completed-repairs dropdown-item" href="/filters/completed">Completed Repairs</a>
             </div>
           </div>
 
           <% if (loggedIn) { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/catalog/create">New Item</a>
-          </li>
+        
           <li class="nav-item">
             <a class="nav-link" href="/users/logout">Logout</a>
           </li>
+        
           <% }%>
 
           <% if (!loggedIn) { %>
@@ -43,3 +40,5 @@
       </div>
     </div>
   </nav>
+
+  

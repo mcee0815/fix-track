@@ -1,21 +1,41 @@
 
   <%- include('layouts/header'); -%>
-  <%- include('layouts/navbar'); -%>
-  
-<div class="container d-flex justify-content-around">
-  
-  <div class="col-md-4  d-flex align-items-center ">
-    <div class="mx-auto ">
-      <h1 class="display-2 ">Cata<span class="font-weight-light">log</span></h1>
-      <hr>
-      <h3 class="text-center font-weight-light">Storage Software</h3>
-      <a href="/catalog" class="btn btn-primary btn-block badge-pill btn-lg mt-3 my-btn-boxshadow">see items</a>
+  <div class="container">
+    <h2 class="my-heading text-left my-3">Fix & Tracker</h2>  
+<div class="container d-flex  justify-content-between  mt-4">
+  <div class="row">
+    <div class="col-md-8 pb-2 rounded">
+      <img src="/images/maintenance.jpg" class="img-fluid" alt="" srcset="">
     </div>
+    <div class="col-md-4 pt-5 rounded bg-secondary">
+      <form action="/users/login" method="POST"class="col-md-10 mx-auto" >
+        <!-- username input -->
+        <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label>Username</label>
+          <input type="text" class="form-control" placeholder="Enter your username" id="username" name="username">              
+        </div>
+      </div>
+      <!-- password -->
+      <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+          <label>Password</label>
+          <input type="password" class="form-control" placeholder="Enter your password" id="password" name="password">              
+        </div>
+      </div>
+      <br>                    
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">login</button>
+      </div>
+      <a href="/users/create" class="text-white">Register</a>
+    </form>
+    </div>
+  </div> 
+</div>
   </div>
   
-  <div class="col-md-6 offset-md-1 d-none d-md-block bg-white">
-    <div class="my-opacity"><img src="/images/cataloger_screenshot.jpg" class="img-fluid"></div>
-  </div>
-</div>
+  
     <%- include('layouts/footer'); -%>
     <%- include('layouts/scripts'); -%> 
+    
+    <!-- /Users/michaelcorporan/mongodb/bin/mongod  --dbpath=/Users/michaelcorporan/mongodb-data -->
