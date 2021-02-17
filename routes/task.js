@@ -20,9 +20,9 @@ router.get('/create-task',authMiddleware,taskCtrl.task_create)
 
 // create task on POST
 router.post('/create-task',[
-    body('title', 'Empty repair title').trim().isLength({ min: 8 }).escape(),
-    body('details', 'provide details').trim().isLength({ min: 10 }).escape(),
-    body('location', 'location').trim().isLength({ min: 1,max:10 }).escape(),
+    body('title', 'Empty repair title').trim().isLength({ max: 15 }).escape(),
+    body('details', 'provide details').trim().isLength({ max: 50 }).escape(),
+    body('location', 'location').trim().isLength({ min: 1,max:30 }).escape(),
     body('reportedBy', 'reported by whom').trim().isLength({ min: 3 }).escape(),
     // body('maintainer', 'Empty repair maintainer').trim().isLength({ min: 2 }).escape(),
 ],authMiddleware,taskCtrl.task_create_post)
