@@ -75,7 +75,6 @@ exports.task_edit_status_get = async (req,res) => {
         task:task
 })
 }
-
 // edit a task status on PUT
 exports.task_edit_status_put = async (req,res) => {
     
