@@ -13,8 +13,8 @@ const taskCtrl = require('../controllers/taskController');
 router.get('/test', taskCtrl.test_page);
 
 /* GET the tasks. */
-router.get('/', taskCtrl.test_page);
-// router.get('/', taskCtrl.task_list);
+// router.get('/', taskCtrl.test_page);
+router.get('/', taskCtrl.task_list);
 
 // create task on GET
 router.get('/create-task',authMiddleware,taskCtrl.task_create)
