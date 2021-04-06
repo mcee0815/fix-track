@@ -8,12 +8,13 @@ var logger = require('morgan');
 const mongoose = require('mongoose')
 const expressSession = require('express-session')
 var sass = require('node-sass-middleware');
+const dotenv = require("dotenv")
+
+dotenv.config()
 
 //Set up default mongoose connection
-// var mongoDB = 'mongodb://127.0.0.1/grocery_catalog';
 var mongoDB = 'mongodb://127.0.0.1/test';
-// let cataloger_db = "mongodb+srv://shopper1:shopper1password@cluster0.rurok.mongodb.net/test"
-let fixtrack_db = "mongodb+srv://mikecee:mypassword@cluster0.qvce1.mongodb.net/test"
+let fixtrack_db = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.qvce1.mongodb.net/test`
 mongoose.connect(fixtrack_db, {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Get the default connection
